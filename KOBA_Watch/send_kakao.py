@@ -1,11 +1,14 @@
 import json
+import os
 from datetime import datetime
 import requests
 
 from config import STOCKS, MARKET_ITEMS
 from market import get_latest_price_info
 from indicator import get_rsi
-from kakao import ACCESS_TOKEN
+
+
+ACCESS_TOKEN = os.getenv("KAKAO_ACCESS_TOKEN")
 
 
 def get_rsi_status(rsi):
@@ -98,10 +101,14 @@ def make_message():
 
 
 def send_message(message):
+    if not ACCESS_TOKEN:
+        raise ValueError("KAKAO_ACCESS_TOKEN Secret이 없습니다.")
+
     url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
 
     headers = {
         "Authorization": f"Bearer {ACCESS_TOKEN}",
+        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
     }
 
     template_object = {
@@ -115,7 +122,7 @@ def send_message(message):
     }
 
     data = {
-        "template_object": json.dumps(template_object, ensure_ascii=False)
+        "template_object": json.dumps(template_object)
     }
 
     response = requests.post(url, headers=headers, data=data)

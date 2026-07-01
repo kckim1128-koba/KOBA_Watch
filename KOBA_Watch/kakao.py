@@ -1,13 +1,9 @@
-from dotenv import load_dotenv
 import os
 from pathlib import Path
 
-env_path = Path(__file__).parent / ".env"
-load_dotenv(env_path)
+ACCESS_TOKEN = os.getenv("KAKAO_ACCESS_TOKEN")
 
-key = os.getenv("KAKAO_REST_API_KEY")
-
-if key:
-    print("✅ REST API Key 읽기 성공")
-else:
-    print("❌ REST API Key 읽기 실패")
+if not ACCESS_TOKEN:
+    token_path = Path(__file__).parent / "kakao_token.txt"
+    with open(token_path, "r", encoding="utf-8") as f:
+        ACCESS_TOKEN = f.read().strip()

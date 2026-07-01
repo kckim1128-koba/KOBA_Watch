@@ -3,7 +3,7 @@ name: KOBA Watch
 on:
   workflow_dispatch:
   schedule:
-    - cron: "52 23 * * *"
+    - cron: "00 24 * * *"
 
 jobs:
   run:

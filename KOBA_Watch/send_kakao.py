@@ -88,8 +88,9 @@ def build_market_section():
 
         close = price_info["close"]
         change = price_info["change"]
+        icon = "🟢" if change >= 0 else "🔴"
 
-        text += f"{name} : {close:.2f} ({change:+.2f}%)\n"
+        text += f"{icon} {name} : {close:.2f} ({change:+.2f}%)\n"
 
         market_summaries.append({
             "symbol": symbol,
@@ -97,6 +98,36 @@ def build_market_section():
             "close": close,
             "change": change,
         })
+
+    sp = next((x for x in market_summaries if x["name"] == "S&P500"), None)
+    nasdaq = next((x for x in market_summaries if x["name"] == "NASDAQ"), None)
+    sox = next((x for x in market_summaries if x["name"] == "SOX"), None)
+    vix = next((x for x in market_summaries if x["name"] == "VIX"), None)
+
+    summary = ""
+
+    if sp and nasdaq:
+        if sp["change"] > 0 and nasdaq["change"] > 0:
+            summary = "📈 미국 증시는 전반적으로 강세"
+        elif sp["change"] < 0 and nasdaq["change"] < 0:
+            summary = "📉 미국 증시는 전반적으로 약세"
+        else:
+            summary = "➖ 미국 증시는 혼조세"
+
+    if sox:
+        if sox["change"] > 1:
+            summary += " · 반도체 강세"
+        elif sox["change"] < -1:
+            summary += " · 반도체 약세"
+
+    if vix:
+        if vix["change"] < 0:
+            summary += " · 변동성 감소"
+        elif vix["change"] > 0:
+            summary += " · 변동성 확대"
+
+    if summary:
+        text += f"\n📝 {summary}\n"
 
     text += "\n"
     return text, market_summaries

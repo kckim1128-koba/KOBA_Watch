@@ -8,7 +8,7 @@ load_dotenv(Path(__file__).parent / ".env")
 REST_API_KEY = os.getenv("KAKAO_REST_API_KEY")
 REDIRECT_URI = "http://localhost:8080"
 
-AUTH_CODE = "ZL8s7mrg5MI5gr89tr5_VpBwmCd_94tY1hMMRlz-WfJmtXx25XbZygAAAAQKDRSjAAABnxtpNhWoblpFv_zasg"
+AUTH_CODE = "0T7lHQLcLSTnc5ioccygPV_Lar-u9ECS4smH7SrxGfuD8FA-nHoidQAAAAQKFxZiAAABnyLWm-XSDh85zpcCzQ"
 
 url = "https://kauth.kakao.com/oauth/token"
 

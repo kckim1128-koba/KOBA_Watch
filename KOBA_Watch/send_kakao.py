@@ -76,7 +76,7 @@ def build_stock_section():
 
 
 def build_market_section():
-    text = "📊 시장 체크\n"
+    text = ""
     market_summaries = []
 
     for symbol, name in MARKET_ITEMS.items():
@@ -107,13 +107,18 @@ def make_message():
     message += "📈 KOBA Watch\n"
     message += "Keep Observing, Build Assets.\n"
     message += "────────────────\n\n"
-    message += "🚨 해외주식 알림\n\n"
+   
 
     stock_text, stock_summaries = build_stock_section()
     market_text, market_summaries = build_market_section()
 
-    message += stock_text
+    message += "🌎 간밤 미국시장\n\n"
     message += market_text
+
+    message += "────────────────\n\n"
+
+    message += "🎯 내 관심종목\n\n"
+    message += stock_text
 
     if USE_NEWS:
         message += get_news_summary()

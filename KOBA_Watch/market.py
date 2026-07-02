@@ -18,6 +18,6 @@ def get_latest_price_info(symbol):
 
     return {
         "data": data,
-        "close": close,
-        "change": change,
+        "close": float(close),
+        "change": float(change),
     }

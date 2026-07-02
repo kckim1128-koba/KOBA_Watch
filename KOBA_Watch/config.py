@@ -4,7 +4,7 @@ STOCKS = {
         "target": 1500,
     },
     "SNXX": {
-        "name": "SNXX",
+        "name": "SNXX (Sandisk 2X)",
         "target": 100,
     },
     "SOXL": {

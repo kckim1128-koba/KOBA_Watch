@@ -6,9 +6,11 @@ import requests
 from config import STOCKS, MARKET_ITEMS
 from market import get_latest_price_info
 from indicator import get_rsi
+from ai import make_ai_comment
+from news import get_news_summary
 
 
-ACCESS_TOKEN = os.getenv("KAKAO_ACCESS_TOKEN")
+ACCESS_TOKEN = os.getenv("KAKAO_ACCESS_TOKEN", "").strip()
 
 
 def get_rsi_status(rsi):
@@ -16,8 +18,7 @@ def get_rsi_status(rsi):
         return "🔥 과매수 주의"
     elif rsi <= 30:
         return "💥 과매도 구간"
-    else:
-        return "보통"
+    return "보통"
 
 
 def get_move_status(change):
@@ -25,8 +26,7 @@ def get_move_status(change):
         return "🚀 5% 이상 급등"
     elif change <= -5:
         return "⚠️ 5% 이상 급락"
-    else:
-        return ""
+    return ""
 
 
 def get_stock_summary(symbol, info):
@@ -76,13 +76,6 @@ def get_market_summary():
     return text
 
 
-def make_ai_comment():
-    return (
-        "🤖 AI 한 줄 의견\n"
-        "반도체 흐름은 강하지만 단기 급등 종목은 RSI와 목표가까지의 거리를 함께 확인하는 것이 좋습니다.\n\n"
-    )
-
-
 def make_message():
     message = ""
     message += "📈 KOBA Watch\n"
@@ -94,6 +87,7 @@ def make_message():
         message += get_stock_summary(symbol, info)
 
     message += get_market_summary()
+    message += get_news_summary()
     message += make_ai_comment()
     message += f"⏰ {datetime.now().strftime('%Y-%m-%d %H:%M')}\n"
 
@@ -122,7 +116,7 @@ def send_message(message):
     }
 
     data = {
-        "template_object": json.dumps(template_object)
+        "template_object": json.dumps(template_object, ensure_ascii=False)
     }
 
     response = requests.post(url, headers=headers, data=data)
@@ -136,5 +130,10 @@ def send_message(message):
         print("❌ 전송 실패")
 
 
-message = make_message()
-send_message(message)
+def run():
+    message = make_message()
+    send_message(message)
+
+
+if __name__ == "__main__":
+    run()

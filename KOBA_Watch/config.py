@@ -20,8 +20,10 @@ STOCKS = {
 
 # 시장 지표
 MARKET_ITEMS = {
-    "^VIX": "VIX",
+    "^GSPC": "S&P500",
+    "^IXIC": "NASDAQ",
     "^SOX": "SOX",
+    "^VIX": "VIX",
 }
 
 # RSI 기준

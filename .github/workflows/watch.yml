@@ -1,6 +1,8 @@
 name: KOBA AUTO
 
 on:
+  schedule:
+    - cron: '20 16 * * *'
   workflow_dispatch:
 
 jobs:

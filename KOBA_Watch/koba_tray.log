@@ -28,3 +28,49 @@ UnicodeEncodeError: 'cp949' codec can't encode character '\u26a0' in position 0:
 ✅ KOBA Watch 알림 전송 성공
 
 [2026-07-03 16:05:07.416227] 
+[2026-07-03 16:19:38.452689] KOBA Tray 종료
+[2026-07-03 16:19:45.233210] Scheduler 시작 / 예약시간=['16:30']
+[2026-07-03 16:30:00.709619] KOBA Watch 실행 시작
+[2026-07-03 16:30:06.786395] returncode=0
+[2026-07-03 16:30:06.786787] ⚠️ Access Token 만료 감지, 갱신 시도
+🔄 토큰 갱신 결과
+{'access_token': 'rtozFQVTsEW0vf1xZXqe7w5D4zwyzg3JAAAAAQoXACcAAAGfJuKBts6SpOckXrb0', 'token_type': 'bearer', 'expires_in': 21599}
+200
+{"result_code":0}
+✅ KOBA Watch 알림 전송 성공
+
+[2026-07-03 16:30:06.787246] 
+[2026-07-03 17:04:05.927108] KOBA Watch 실행 시작
+[2026-07-03 17:04:15.733232] returncode=0
+[2026-07-03 17:04:15.733628] ⚠️ Access Token 만료 감지, 갱신 시도
+🔄 토큰 갱신 결과
+{'access_token': '5uR4R-0HaRjBdLHurGEjYn0m4sYor7HGAAAAAQoXIiAAAAGfJwHFd86SpOckXrb0', 'token_type': 'bearer', 'expires_in': 21599}
+200
+{"result_code":0}
+✅ KOBA Watch 알림 전송 성공
+
+[2026-07-03 17:04:15.733974] 
+[2026-07-03 17:14:38.267622] KOBA Tray 종료
+[2026-07-03 17:14:43.709245] Scheduler 시작 / 예약시간=['17:15']
+[2026-07-03 17:15:00.721107] KOBA Watch 실행 시작
+[2026-07-03 17:15:05.319843] returncode=0
+[2026-07-03 17:15:05.320220] ⚠️ Access Token 만료 감지, 갱신 시도
+🔄 토큰 갱신 결과
+{'access_token': 'OFR6-lU9Ob9bp-shL8G03w7zh8ukn-AaAAAAAQoNGVMAAAGfJwuu6s6SpOckXrb0', 'token_type': 'bearer', 'expires_in': 21599}
+200
+{"result_code":0}
+✅ KOBA Watch 알림 전송 성공
+
+[2026-07-03 17:15:05.320563] 
+[2026-07-03 17:15:48.172792] KOBA Tray 종료
+[2026-07-03 17:15:54.948061] Scheduler 시작 / 예약시간=['17:20']
+[2026-07-03 17:20:00.238342] KOBA Watch 실행 시작
+[2026-07-03 17:20:05.028933] returncode=0
+[2026-07-03 17:20:05.029351] ⚠️ Access Token 만료 감지, 갱신 시도
+🔄 토큰 갱신 결과
+{'access_token': 'rEAvP0v0Yga4VFj_Qc40fjdiYsbLZKmkAAAAAQoXFmIAAAGfJxBBnc6SpOckXrb0', 'token_type': 'bearer', 'expires_in': 21599}
+200
+{"result_code":0}
+✅ KOBA Watch 알림 전송 성공
+
+[2026-07-03 17:20:05.029703] 

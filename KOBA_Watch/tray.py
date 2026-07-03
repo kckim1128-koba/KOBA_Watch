@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw
 BASE_DIR = Path(__file__).parent
 LOG_FILE = BASE_DIR / "koba_tray.log"
 
-AUTO_TIMES = ["16:05"]  # 테스트 시간, 나중에 ["08:00"]
+AUTO_TIMES = ["17:20"]  # 테스트 시간, 나중에 ["08:00"]
 
 
 def log(msg):
@@ -36,6 +36,7 @@ def run_koba():
         encoding="utf-8",
         errors="replace",
         env=env,
+        creationflags=subprocess.CREATE_NO_WINDOW,
     )
 
     log(f"returncode={result.returncode}")

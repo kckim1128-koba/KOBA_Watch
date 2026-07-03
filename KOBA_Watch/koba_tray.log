@@ -1,0 +1,30 @@
+[2026-07-03 15:47:36.677435] Scheduler 시작 / 예약시간=['14:40']
+[2026-07-03 15:56:30.919120] Scheduler 시작 / 예약시간=['16:00']
+[2026-07-03 15:56:36.558345] KOBA Tray 종료
+[2026-07-03 16:00:00.004101] KOBA Watch 실행 시작
+[2026-07-03 16:00:05.316847] returncode=1
+[2026-07-03 16:00:05.317307] 
+[2026-07-03 16:00:05.317622] Traceback (most recent call last):
+  File "C:\Users\kckim.ASE\Desktop\Project KOBA\KOBA_Watch\main.py", line 5, in <module>
+    run()
+    ~~~^^
+  File "C:\Users\kckim.ASE\Desktop\Project KOBA\KOBA_Watch\send_kakao.py", line 242, in run
+    send_message(message)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\kckim.ASE\Desktop\Project KOBA\KOBA_Watch\send_kakao.py", line 225, in send_message
+    print("\u26a0\ufe0f Access Token 만료 감지, 갱신 시도")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'cp949' codec can't encode character '\u26a0' in position 0: illegal multibyte sequence
+
+[2026-07-03 16:04:17.129746] KOBA Tray 종료
+[2026-07-03 16:04:20.144829] Scheduler 시작 / 예약시간=['16:05']
+[2026-07-03 16:05:00.768568] KOBA Watch 실행 시작
+[2026-07-03 16:05:07.415256] returncode=0
+[2026-07-03 16:05:07.415782] ⚠️ Access Token 만료 감지, 갱신 시도
+🔄 토큰 갱신 결과
+{'access_token': 'PgeIfNgQW3GNTpUMJ8KIRWSaqaUYBrw2AAAAAQoNIpkAAAGfJsugds6SpOckXrb0', 'token_type': 'bearer', 'expires_in': 21599}
+200
+{"result_code":0}
+✅ KOBA Watch 알림 전송 성공
+
+[2026-07-03 16:05:07.416227] 

@@ -2,7 +2,10 @@ import json
 import os
 from datetime import datetime
 import requests
+from dotenv import load_dotenv
+from pathlib import Path
 
+load_dotenv(Path(__file__).parent / ".env")
 from config import (
     STOCKS,
     MARKET_ITEMS,

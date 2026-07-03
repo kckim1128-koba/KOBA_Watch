@@ -21,6 +21,30 @@ from news import get_news_summary
 
 
 ACCESS_TOKEN = os.getenv("KAKAO_ACCESS_TOKEN", "").strip()
+REFRESH_TOKEN = os.getenv("KAKAO_REFRESH_TOKEN", "").strip()
+REST_API_KEY = os.getenv("KAKAO_REST_API_KEY", "").strip()
+
+
+def refresh_access_token():
+    if not REFRESH_TOKEN or not REST_API_KEY:
+        print("❌ Refresh Token 또는 REST API Key가 없습니다.")
+        return None
+
+    url = "https://kauth.kakao.com/oauth/token"
+
+    data = {
+        "grant_type": "refresh_token",
+        "client_id": REST_API_KEY,
+        "refresh_token": REFRESH_TOKEN,
+    }
+
+    response = requests.post(url, data=data)
+    tokens = response.json()
+
+    print("🔄 토큰 갱신 결과")
+    print(tokens)
+
+    return tokens.get("access_token")
 
 
 def get_move_status(change):
@@ -138,7 +162,6 @@ def make_message():
     message += "📈 KOBA Watch\n"
     message += "Keep Observing, Build Assets.\n"
     message += "────────────────\n\n"
-   
 
     stock_text, stock_summaries = build_stock_section()
     market_text, market_summaries = build_market_section()
@@ -172,11 +195,6 @@ def send_message(message):
 
     url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
 
-    headers = {
-        "Authorization": f"Bearer {ACCESS_TOKEN}",
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-    }
-
     template_object = {
         "object_type": "text",
         "text": message,
@@ -191,7 +209,21 @@ def send_message(message):
         "template_object": json.dumps(template_object, ensure_ascii=False)
     }
 
-    response = requests.post(url, headers=headers, data=data)
+    def post_to_kakao(token):
+        headers = {
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+        }
+        return requests.post(url, headers=headers, data=data)
+
+    response = post_to_kakao(ACCESS_TOKEN)
+
+    if response.status_code == 401:
+        print("⚠️ Access Token 만료 감지, 갱신 시도")
+        new_access_token = refresh_access_token()
+
+        if new_access_token:
+            response = post_to_kakao(new_access_token)
 
     print(response.status_code)
     print(response.text)

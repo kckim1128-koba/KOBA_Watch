@@ -1,8 +1,7 @@
 name: KOBA AUTO
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'
+  
   workflow_dispatch:
 
 jobs:
@@ -26,5 +25,5 @@ jobs:
         env:
           KAKAO_ACCESS_TOKEN: ${{ secrets.KAKAO_ACCESS_TOKEN }}
         run: |
-          cd KOBA_Watch
+          cd KOBA_WatchS
           python main.py
